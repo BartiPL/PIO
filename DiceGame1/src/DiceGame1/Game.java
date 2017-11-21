@@ -1,19 +1,22 @@
 package DiceGame1;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Game {
     private Random dice = new Random();
     private Player player;
+    private List<Player> players = new ArrayList();
     
     public void addPlayer(Player player) {
         this.player = player;
     }
-    
+       
     public void play() {
+        Random dice = new Random();
       int number, guess;
-      player.setName("Gracz");
-      
+            
       do {
           number = dice.nextInt(6) + 1;
          System.out.println("Wylosowana liczba: " + number);
