@@ -3,9 +3,13 @@ package enigma;
     
     public static final String ALPHA_UP_SPACE = "ABCDEFGHIJKLMNOPQRSTWZX";
     
-    public String charset= "";
+    private String charset= "";
+    private int length;
     
     public Alphabet(String charset){
+        if (charset.isEmpty()) {
+            throw new IllegalArgumentException("Zestaw znaków nie może być pusty");
+        }
         this.charset = charset;
     }
 
@@ -17,12 +21,12 @@ package enigma;
         return charset;
     }
     
-    int indexOf(int ch){
+    public int indexOf(int ch){
         return charset.indexOf(ch);
     }
 
-    int charAt(int idx) {
-        return charset.charAt(idx);     
+    public int charAt(int idx) {
+        return charset.charAt(idx % charset.length());     
     }
 
     public int length() {

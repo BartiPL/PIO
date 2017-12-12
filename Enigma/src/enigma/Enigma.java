@@ -1,26 +1,43 @@
 package enigma;
-//barti
+
 public class Enigma {
+        
+        
+    
+  
 
- public static void main(String[] args) {
- 
-        Alphabet alphabet = new Alphabet(Alphabet.ALPHA_UP_SPACE);
+public static void main(String[] args) 
+{
+/*   
+   String alphabet = "ABCDEF" ;
+   String text ="ABCF";
+   
+   StringBuilder out = new StringBuilder();
+    int x = alphabet.length();
+    for(int i=0 ; i<text.length() ; ++i){
+       
+        int ch = text.charAt(i);
+       
+        int idx = alphabet.indexOf(ch);
         
-        System.out.println(alphabet.isTextValid("ABC"));        
-             
+        idx = (idx + 1) % x;
         
-        Cipher cipher = new Cipher(alphabet);
+        ch = alphabet.charAt(idx);
         
-        cipher.setAlphabet(alphabet);
-        cipher.setKey(1);
-        
-        String in = "ABCDEF";
-        
-        String out = cipher.encrypt(in);
-        
-        System.out.println("Tekst szyforwany: "+in);        
-        System.out.println("Tekst zaszyforwany: "+out);
-
-        
+        out.append((char)ch);
+} 
+  */
+    Alphabet alphabet = new Alphabet("ABCDEFGHIJKLMNOPRST");
+    Cipher cipher = new Cipher();
+    
+    //cipher.setAlphabet(alphabet);
+    String in = "ABCT";
+    String out = cipher.encrypt(in);
+            
+    System.out.println("teskt szyfrowany: " + in);
+    System.out.println("teskt zaszyfrowany: " + out);
     }
+
+
+
 }
