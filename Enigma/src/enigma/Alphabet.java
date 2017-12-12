@@ -1,22 +1,32 @@
 package enigma;
  public class Alphabet {
-    private Alphabet alphabet;
-    private String Charset = "";
     
-    public static final String ALPHA_UP_SPACE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    public static final String ALPHA_SPACE = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-    public Alphabet(String Charset) {
-     this.Charset = Charset;   
+    public static final String ALPHA_UP_SPACE = "ABCDEFGHIJKLMNOPQRSTWZX";
+    
+    public String charset= "";
+    
+    public Alphabet(String charset){
+        this.charset = charset;
+    }
+
+    public boolean isTextValid(String text){
+        return text.matches("^["+charset+"]+$");
+    }
+
+    String getCharset() {
+        return charset;
     }
     
-    public void setAlphabet(Alphabet alphabet) {
-     this.alphabet = alphabet;   
+    int indexOf(int ch){
+        return charset.indexOf(ch);
+    }
+
+    int charAt(int idx) {
+        return charset.charAt(idx);     
+    }
+
+    public int length() {
+        return charset.length();
     }
     
-    public boolean isTextValid() {
-         return text.matches("^[ABC]$");
-    }
-    public String getCharset() {
-        return Charset;
-    } 
 }

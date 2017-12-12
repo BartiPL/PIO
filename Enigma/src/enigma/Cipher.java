@@ -1,33 +1,39 @@
 package enigma;
 public class Cipher {
-    public void Cipher() {
-      
-    }
-    private String alphabet;
     private int key = 1;
-       
-    public void setKey(int key) {
-        this.key = key;  
+    public Alphabet alphabet;
+
+    Cipher(Alphabet alphabet) {
+        this.alphabet = alphabet;
     }
-    
-    public void setAlphabet(String alphabet) {
-        this.alphabet = alphabet;   
-    }
-    
-    public String Encrypt() {
+    public String encrypt(String text){
         
-        StringBuilder out = new StringBuilder(); //#2
-        for (int i=0; i<text.length(); ++i) {
-            int ch = text.charAt(i);
+        if(!alphabet.isTextValid(text)){
+        throw new IllegalArgumentException("Tekst zawiera znaki spoza alfabetu.");
+        }
+        
+        StringBuilder out = new StringBuilder();
+        String in = text;
+
+       for(int i=0 ; i < in.length() ; i++){
+            
+            int ch = in.charAt(i);
             int idx = alphabet.indexOf(ch);
-            idx = (idx + 1) % alphabet.length();
+            idx = (idx + key) % alphabet.length();
             ch = alphabet.charAt(idx);
-       //ch = ch + 1;    
-       //out = out + (char)ch; //#1
-            out.append((char)ch);   
-      }
-        
+            
+            out.append((char)ch);
+            }
+        return out.toString();
     }
     
-}
+    public void setKey(int key){
+        this.key = key;
+    }
+    
+    public void setAlphabet(Alphabet alphabet){
+        this.alphabet = alphabet;
+    }
+    
+} 
 
